@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="La página personal de Edgar: MTB, rutas, amigos y fotos." />
+		<title>Edgar | MTB y aventuras</title>
+		<style>
+			:root { --bg: #07130f; --surface: rgba(16, 38, 29, 0.82); --text: #ebf7ef; --muted: #b5c9be; --orange: #ff8a2a; --green: #66d98e; --line: rgba(187, 229, 209, 0.18); }
+			* { box-sizing: border-box; }
+			html { scroll-behavior: smooth; }
+			body { margin: 0; color: var(--text); font-family: Arial, Helvetica, sans-serif; background: radial-gradient(ellipse at top left, rgba(255, 138, 42, 0.13), transparent 34%), linear-gradient(145deg, #07130f, #030b08 72%); }
+			a { color: inherit; text-decoration: none; }
+			img { display: block; max-width: 100%; }
+			.container { width: min(1100px, calc(100% - 36px)); margin: 0 auto; }
+			.topbar { position: sticky; top: 0; z-index: 10; background: rgba(3, 11, 8, 0.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+			.nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+			.brand { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+			.nav-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: 0.92rem; }
+			.nav-links a:hover { color: var(--orange); }
+			section { padding: 48px 0; }
+			.hero { padding: 74px 0 52px; }
+			.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; align-items: center; }
+			.eyebrow { color: var(--green); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+			h1 { margin: 18px 0; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.96; }
+			.highlight { color: var(--orange); }
+			.lead { max-width: 600px; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+			.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+			.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; border-radius: 999px; font-weight: 700; }
+			.button-primary { color: #17110b; background: var(--orange); }
+			.button-secondary { border: 1px solid var(--line); }
+			.profile { position: relative; padding: 16px; border: 1px solid var(--line); border-radius: 28px; background: var(--surface); }
+			.profile img { width: 100%; height: 390px; object-fit: cover; border-radius: 20px; }
+			.profile-label { position: absolute; right: 26px; bottom: 26px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(3, 11, 8, 0.88); font-weight: 700; }
+			.heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+			h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
+			.muted { color: var(--muted); }
+			.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+			.panel { padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--muted); line-height: 1.8; }
+			.panel p { margin: 0; }
+			.interests { margin: 0; padding-left: 20px; color: var(--text); line-height: 2; }
+			.socials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+			.social { padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+			.social strong { display: block; margin-bottom: 8px; }
+			.social span { color: var(--muted); font-size: 0.92rem; }
+			.album { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+			.photo { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+			.photo img { width: 100%; height: 230px; object-fit: cover; }
+			.caption { padding: 12px 14px 15px; color: var(--muted); font-size: 0.92rem; }
+			.contact { text-align: center; padding: 30px 20px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(125deg, rgba(255, 138, 42, 0.1), rgba(102, 217, 142, 0.08)); }
+			.contact h2 { margin-bottom: 12px; font-size: 2rem; }
+			.contact p { max-width: 650px; margin: 0 auto 22px; color: var(--muted); line-height: 1.7; }
+			footer { padding: 26px 0 40px; color: var(--muted); text-align: center; font-size: 0.9rem; }
+			@media (max-width: 760px) { .nav { flex-direction: column; justify-content: center; padding: 14px 0; } .hero-grid, .about-grid, .socials { grid-template-columns: 1fr; } .album { grid-template-columns: repeat(2, minmax(0, 1fr)); } .heading { align-items: start; flex-direction: column; } .profile img { height: 340px; } }
+			@media (max-width: 480px) { .album { grid-template-columns: 1fr; } .photo img { height: 260px; } }
+		</style>
+	</head>
+	<body>
+		<header class="topbar">
+			<nav class="container nav" aria-label="Navegación principal">
+				<a class="brand" href="#inicio">Edgar</a>
+				<div class="nav-links"><a href="#sobre-mi">Sobre mí</a><a href="#redes">Redes</a><a href="#album">Mi álbum</a></div>
+			</nav>
+		</header>
+		<main id="inicio">
+			<section class="hero">
+				<div class="container hero-grid">
+					<div>
+						<span class="eyebrow">Bienvenido a mi página</span>
+						<h1>Hola, soy <span class="highlight">Edgar</span></h1>
+						<p class="lead">Me encanta la MTB, salir a rodar, probar rutas y disfrutar cada aventura. También juego Roblox con mis amigos y siempre estoy listo para pasarla bien.</p>
+						<div class="actions"><a class="button button-primary" href="#album">Ver mi álbum</a><a class="button button-secondary" href="#sobre-mi">Conóceme</a></div>
+					</div>
+					<div class="profile"><img src="edgar1.jpeg" alt="Edgar en su bicicleta de montaña" /><span class="profile-label">MTB · Rutas · Aventuras</span></div>
+				</div>
+			</section>
+			<section id="sobre-mi">
+				<div class="container">
+					<div class="heading"><h2>Sobre mí</h2><span class="muted">Un poco de mi historia</span></div>
+					<div class="about-grid">
+						<div class="panel"><p>Me llamo <strong>Edgar Xavier Quezada Navarrete</strong>. Me apasiona andar en bicicleta, descubrir rutas y compartir mis momentos favoritos con amigos.</p></div>
+						<div class="panel"><ul class="interests"><li>MTB, rutas y saltos en bicicleta</li><li>Jugar Roblox con mis amigos</li><li>Jugar a la pelota y disfrutar el tiempo libre</li></ul></div>
+					</div>
+				</div>
+			</section>
+			<section id="redes">
+				<div class="container">
+					<div class="heading"><h2>Mis redes</h2><span class="muted">Sígueme por aquí</span></div>
+					<div class="socials">
+						<a class="social" href="https://instagram.com/edgaarr_777" target="_blank" rel="noreferrer"><strong>Instagram</strong><span>@edgaarr_777</span></a>
+						<a class="social" href="https://www.roblox.com/search/users?keyword=Xytxzcat" target="_blank" rel="noreferrer"><strong>Roblox</strong><span>Xytxzcat</span></a>
+						<a class="social" href="#album"><strong>Mi pasatiempo</strong><span>MTB y bicicleta</span></a>
+					</div>
+				</div>
+			</section>
+			<section id="album">
+				<div class="container">
+					<div class="heading"><h2>Mi álbum</h2><span class="muted">Fotos y momentos favoritos</span></div>
+					<div class="album">
+						<article class="photo"><img src="edgar1.jpeg" alt="Foto de Edgar 1" /><div class="caption">Un momento para recordar.</div></article>
+						<article class="photo"><img src="edgar2.jpeg" alt="Foto de Edgar 2" /><div class="caption">Otro momento de mi vida.</div></article>
+						<article class="photo"><img src="edgar3.jpeg" alt="Foto de Edgar 3" /><div class="caption">Siempre con buena vibra.</div></article>
+						<article class="photo"><img src="edgar4.jpeg" alt="Foto de Edgar 4" /><div class="caption">Una foto más para el álbum.</div></article>
+						<article class="photo"><img src="edgar5.jpeg" alt="Foto de Edgar 5" /><div class="caption">Momentos que quedan guardados.</div></article>
+						<article class="photo"><img src="edgar6.jpeg" alt="Foto de Edgar 6" /><div class="caption">Días para recordar.</div></article>
+						<article class="photo"><img src="edgar7.jpeg" alt="Foto de Edgar 7" /><div class="caption">Otra aventura de Edgar.</div></article>
+						<article class="photo"><img src="edgar8.jpeg" alt="Foto de Edgar 8" /><div class="caption">Un recuerdo especial.</div></article>
+						<article class="photo"><img src="edgar9.jpeg" alt="Foto de Edgar 9" /><div class="caption">Mi álbum sigue creciendo.</div></article>
+						<article class="photo"><img src="edgar10.jpeg" alt="Foto de Edgar 10" /><div class="caption">Más momentos favoritos.</div></article>
+						<article class="photo"><img src="edgar11.jpeg" alt="Foto de Edgar 11" /><div class="caption">Una historia en cada foto.</div></article>
+						<article class="photo"><img src="edgar12.jpeg" alt="Foto de Edgar 12" /><div class="caption">Recuerdos para compartir.</div></article>
+						<article class="photo"><img src="edgar13.jpeg" alt="Foto de Edgar 13" /><div class="caption">Otro momento inolvidable.</div></article>
+						<article class="photo"><img src="edgar14.jpeg" alt="Foto de Edgar 14" /><div class="caption">Parte de mi historia.</div></article>
+						<article class="photo"><img src="edgar15.jpeg" alt="Foto de Edgar 15" /><div class="caption">Momentos con estilo.</div></article>
+						<article class="photo"><img src="edgar16.jpeg" alt="Foto de Edgar 16" /><div class="caption">Una foto más de mi colección.</div></article>
+						<article class="photo"><img src="edgar17.jpeg" alt="Foto de Edgar 17" /><div class="caption">Recuerdos de mis aventuras.</div></article>
+						<article class="photo"><img src="edgar18.jpeg" alt="Foto de Edgar 18" /><div class="caption">Gracias por visitar mi álbum.</div></article>
+					</div>
+				</div>
+			</section>
+			<section><div class="container contact"><h2>¿Quieres conocerme más?</h2><p>Me gustan la bici, los retos, las rutas y compartir buenos momentos. Puedes encontrarme en Instagram y Roblox.</p><a class="button button-primary" href="https://instagram.com/edgaarr_777" target="_blank" rel="noreferrer">Ver Instagram</a></div></section>
+		</main>
+		<footer>© 2026 Edgar Xavier Quezada Navarrete</footer>
+	</body>
+</html>
